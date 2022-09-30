@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netrika.Services", "NetrikaTest.Services\Netrika.Services.csproj", "{6C9A9375-18CE-4CF5-9404-507DF881389C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netrika.Services", "Netrika.Services\Netrika.Services.csproj", "{6C9A9375-18CE-4CF5-9404-507DF881389C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netrika.Web", "Netrika.Web\Netrika.Web.csproj", "{CDF66C12-8AF2-4FEF-92B1-F7182400428E}"
 EndProject
