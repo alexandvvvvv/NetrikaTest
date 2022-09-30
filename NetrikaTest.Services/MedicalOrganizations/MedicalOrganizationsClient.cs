@@ -18,7 +18,8 @@ namespace NetrikaTest.Services.MedicalOrganizations
     {
         public async Task<IReadOnlyCollection<Organization>> List()
         {
-            var content = JsonContent.Create(new
+            //todo extract params to configuration
+            var requestBody = JsonContent.Create(new
             {
                 resourceType = "Parameters",
                 parameter = new[]
@@ -31,15 +32,14 @@ namespace NetrikaTest.Services.MedicalOrganizations
                 }
             });
 
-            //todo
-            var res = await new HttpClient().PostAsync("http://r78-rc.zdrav.netrika.ru/nsi/fhir/term/ValueSet/$expand?_format=json", content);
+            var res = await new HttpClient().PostAsync("http://r78-rc.zdrav.netrika.ru/nsi/fhir/term/ValueSet/$expand?_format=json", requestBody);
             var stringContent = await res.Content.ReadAsStringAsync();
 
             var jObject = JObject.Parse(stringContent);
-            var contains = jObject.SelectToken("parameter[0].resource.expansion.contains");
+            var containsToken = jObject.SelectToken("parameter[0].resource.expansion.contains");
             var result = new List<Organization>();
 
-            foreach (var x in contains!)
+            foreach (var x in containsToken!)
             {
                 result.Add(new()
                 {

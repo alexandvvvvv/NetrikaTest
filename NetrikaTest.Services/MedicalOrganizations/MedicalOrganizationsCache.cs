@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using NetrikaTest.Services.Configuration;
+using Netrika.Services.MedicalOrganizations;
 using NetrikaTest.Services.Utils;
 
 namespace NetrikaTest.Services.MedicalOrganizations
@@ -15,9 +15,9 @@ namespace NetrikaTest.Services.MedicalOrganizations
         private readonly Cached<IReadOnlyCollection<MedicalOrganization>> _cached;
         private readonly IServiceProvider _serviceProvider;
 
-        public MedicalOrganizationsCache(IOptions<CacheParams> cacheParams, IServiceProvider serviceProvider)
+        public MedicalOrganizationsCache(IOptions<MedicalOrganizationsParams> cacheParams, IServiceProvider serviceProvider)
         {
-            _cached = new(cacheParams.Value.MedicalOrganizationsCacheExpirationInSeconds);
+            _cached = new(cacheParams.Value.CacheExpirationInSeconds);
             _serviceProvider = serviceProvider;
         }
 

@@ -1,5 +1,4 @@
-using Microsoft.AspNetCore.Builder;
-using NetrikaTest.Services.Configuration;
+using Netrika.Services.MedicalOrganizations;
 using NetrikaTest.Services.MedicalOrganizations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.RegisterMedicalOrganizationsServices();
-builder.Services.Configure<CacheParams>(options => builder.Configuration.Bind("CacheParams", options));
+builder.Services.Configure<MedicalOrganizationsParams>(options => builder.Configuration.Bind("MedicalOrganizationsParams", options));
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

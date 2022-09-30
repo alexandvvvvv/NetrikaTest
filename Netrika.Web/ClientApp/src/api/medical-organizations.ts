@@ -17,6 +17,9 @@ const customFetchWithResponse = async <TBody extends any>(url: string, method: s
     return Promise.resolve(await response.json());
 }
 
-export const loadMedicalOrganizations = (searchTerm: string): Promise<MedicalOrganization[]> => {
-    return customFetchWithResponse<MedicalOrganization[]>('MedicalOrganizations', "GET");
+export const loadMedicalOrganizations = (searchTerm: string, skip?: number, take?: number): Promise<MedicalOrganization[]> => {
+    return customFetchWithResponse<MedicalOrganization[]>(`api/MedicalOrganizations?query=${searchTerm}&skip=${skip}&take=${take}`, "GET");
+}
+export const getMedicalOrganization = (id: string): Promise<MedicalOrganization> => {
+    return customFetchWithResponse<MedicalOrganization[]>(`api/MedicalOrganizations/${id}`, "GET");
 }
