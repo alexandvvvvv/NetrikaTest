@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netrika.Services", "NetrikaTest.Services\Netrika.Services.csproj", "{6C9A9375-18CE-4CF5-9404-507DF881389C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netrika.Web", "Netrika.Web\Netrika.Web.csproj", "{CDF66C12-8AF2-4FEF-92B1-F7182400428E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C9A9375-18CE-4CF5-9404-507DF881389C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9A9375-18CE-4CF5-9404-507DF881389C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9A9375-18CE-4CF5-9404-507DF881389C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9A9375-18CE-4CF5-9404-507DF881389C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF66C12-8AF2-4FEF-92B1-F7182400428E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF66C12-8AF2-4FEF-92B1-F7182400428E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF66C12-8AF2-4FEF-92B1-F7182400428E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF66C12-8AF2-4FEF-92B1-F7182400428E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5F457F3-80B2-4443-9448-0C2966E8869B}
+	EndGlobalSection
+EndGlobal
