@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Netrika.Services.MedicalOrganizations;
+using Netrika.Services.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,19 @@ namespace NetrikaTest.Services.MedicalOrganizations
     public class MedicalOrganizationsService : IMedicalOrganizationsService
     {
         private readonly IMedicalOrganizationsCache _cache;
+        private readonly IMedicalOrganizationsValidator _medicalOrganizationsValidator;
+        private readonly IPaginatorValidator _paginatorValidator;
         private readonly int _throttle;
 
-        public MedicalOrganizationsService(IMedicalOrganizationsCache cache, IOptions<MedicalOrganizationsParams> options)
+        public MedicalOrganizationsService(IMedicalOrganizationsCache cache, 
+            IOptions<MedicalOrganizationsParams> options, 
+            IMedicalOrganizationsValidator medicalOrganizationsValidator, 
+            IPaginatorValidator paginatorValidator)
         {
             _cache = cache;
             _throttle = options.Value.Throttling;
+            _medicalOrganizationsValidator = medicalOrganizationsValidator;
+            _paginatorValidator = paginatorValidator;
         }
 
         public async Task<MedicalOrganization> Get(Guid id)
@@ -38,7 +46,9 @@ namespace NetrikaTest.Services.MedicalOrganizations
 
         public async Task<IReadOnlyCollection<MedicalOrganization>> List(string? filter, int? skip, int? take, string? orderBy)
         {
-            //todo validate params
+            _medicalOrganizationsValidator.Validate(filter);
+            _paginatorValidator.Validate(skip, take);
+
             var result = await _cache.List();
 
             //var searchChunks = name.Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);

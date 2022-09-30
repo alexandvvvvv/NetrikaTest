@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Netrika.Services.MedicalOrganizations;
 
 namespace NetrikaTest.Services.MedicalOrganizations
 {
@@ -8,6 +9,7 @@ namespace NetrikaTest.Services.MedicalOrganizations
         {
             services.AddScoped<IMedicalOrganizationsClient, MedicalOrganizationsClient>();
             services.AddScoped<IMedicalOrganizationsService, MedicalOrganizationsService>();
+            services.AddScoped<IMedicalOrganizationsValidator, MedicalOrganizationsValidator>();
             services.AddSingleton<IMedicalOrganizationsCache, MedicalOrganizationsCache>();
         }
     }

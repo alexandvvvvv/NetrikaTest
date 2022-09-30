@@ -1,4 +1,5 @@
 using Netrika.Services.MedicalOrganizations;
+using Netrika.Services.Utils;
 using NetrikaTest.Services.MedicalOrganizations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.RegisterMedicalOrganizationsServices();
+builder.Services.RegisterUtilityValidators();
 builder.Services.Configure<MedicalOrganizationsParams>(options => builder.Configuration.Bind("MedicalOrganizationsParams", options));
 builder.Services.AddSwaggerGen();
 
