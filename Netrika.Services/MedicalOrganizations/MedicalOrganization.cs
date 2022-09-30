@@ -1,4 +1,4 @@
-﻿namespace NetrikaTest.Services.MedicalOrganizations
+﻿namespace Netrika.Services.MedicalOrganizations
 {
     public class MedicalOrganization
     {

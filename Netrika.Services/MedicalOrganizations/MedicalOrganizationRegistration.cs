@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Netrika.Services.MedicalOrganizations;
 
-namespace NetrikaTest.Services.MedicalOrganizations
+namespace Netrika.Services.MedicalOrganizations
 {
     public static class MedicalOrganizationRegistration
     {

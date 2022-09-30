@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
-using Netrika.Services.MedicalOrganizations;
 using Netrika.Services.Utils;
 
-namespace NetrikaTest.Services.MedicalOrganizations
+namespace Netrika.Services.MedicalOrganizations
 {
     public interface IMedicalOrganizationsService
     {

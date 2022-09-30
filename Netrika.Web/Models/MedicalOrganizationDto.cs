@@ -1,4 +1,4 @@
-﻿using NetrikaTest.Services.MedicalOrganizations;
+﻿using Netrika.Services.MedicalOrganizations;
 
 namespace Netrika.Web.Models
 {

@@ -1,4 +1,4 @@
-﻿namespace NetrikaTest.Services.Utils
+﻿namespace Netrika.Services.Utils
 {
     public class AsyncLock
     {

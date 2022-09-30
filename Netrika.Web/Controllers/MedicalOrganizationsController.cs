@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Netrika.Web.Models;
-using NetrikaTest.Services.MedicalOrganizations;
+using Netrika.Services.MedicalOrganizations;
 
 namespace Netrika.Web.Controllers
 {

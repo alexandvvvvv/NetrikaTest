@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace NetrikaTest.Services.Utils
+namespace Netrika.Services.Utils
 {
     public class Cached<T> where T : class
     {

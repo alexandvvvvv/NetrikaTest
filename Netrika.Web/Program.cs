@@ -1,8 +1,6 @@
 using AspNetCoreRateLimit;
-using Microsoft.Extensions.Configuration;
 using Netrika.Services.MedicalOrganizations;
 using Netrika.Services.Utils;
-using NetrikaTest.Services.MedicalOrganizations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,13 +13,12 @@ builder.Services.RegisterUtilityValidators();
 builder.Services.Configure<MedicalOrganizationsParams>(options => builder.Configuration.Bind("MedicalOrganizationsParams", options));
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMemoryCache();
 
-//load general configuration from appsettings.json
+//ip throttling
 builder.Services.Configure<IpRateLimitOptions>(options => builder.Configuration.Bind("IpRateLimiting", options));
 
-//load ip rules from appsettings.json
 builder.Services.Configure<IpRateLimitPolicies>(options => builder.Configuration.Bind("IpRateLimitPolicies", options));
-builder.Services.AddMemoryCache();
 builder.Services.AddInMemoryRateLimiting();
 builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 

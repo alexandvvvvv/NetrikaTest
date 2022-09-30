@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Netrika.Services.MedicalOrganizations;
-using NetrikaTest.Services.Utils;
+using Netrika.Services.Utils;
 
-namespace NetrikaTest.Services.MedicalOrganizations
+namespace Netrika.Services.MedicalOrganizations
 {
     public interface IMedicalOrganizationsCache
     {
