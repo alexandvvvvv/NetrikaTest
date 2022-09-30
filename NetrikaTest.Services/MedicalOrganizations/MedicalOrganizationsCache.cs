@@ -25,7 +25,7 @@ namespace NetrikaTest.Services.MedicalOrganizations
         {
             return _cached.GetOrAdd(async () =>
             {
-                using var scope = _serviceProvider.CreateScope();
+                using var scope = _serviceProvider.CreateScope(); //todo refactor. scope is created because the class is registered as singleton
 
                 var medicalOrganizations = scope.ServiceProvider.GetRequiredService<IMedicalOrganizationsClient>();
                 var result = await medicalOrganizations.List();

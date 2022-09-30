@@ -18,7 +18,7 @@ namespace NetrikaTest.Services.MedicalOrganizations
     {
         public async Task<IReadOnlyCollection<Organization>> List()
         {
-            //todo extract params to configuration
+            //todo extract params to configuration ?
             var requestBody = JsonContent.Create(new
             {
                 resourceType = "Parameters",

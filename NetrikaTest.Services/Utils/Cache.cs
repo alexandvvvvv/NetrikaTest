@@ -15,32 +15,34 @@ namespace NetrikaTest.Services.Utils
             _retentionInSeconds = retentionInSeconds;
         }
 
-        public async Task<T> GetOrAdd(Func<Task<T>> factory) //todo: always return but trigger reload
+        public async Task<T> GetOrAdd(Func<Task<T>> factory)
         {
-            if (TryGet(out var result))
+            if (IsUpToDate(out var result))
             {
                 return result;
             }
 
-            return await _lock.Execute(async () =>
+            var updateTask = _lock.Execute(async () =>
             {
-                if (TryGet(out result))
+                if (!IsUpToDate(out _))
                 {
-                    return result;
+                    _cachedValue = await factory();
+                    _cachedTime = DateTime.UtcNow;
                 }
-
-                _cachedValue = await factory();
-                _cachedTime = DateTime.UtcNow;
-                return _cachedValue;
+                return _cachedValue!;
             });
+
+            bool shouldAwait = result is null;
+
+            return shouldAwait ? await updateTask : result!;
         }
 
-        public bool TryGet([NotNullWhen(true)] out T? cache)
+        public bool IsUpToDate([NotNullWhen(true)] out T? cache)
         {
-            if (_cachedValue is not null && DateTime.UtcNow < (_cachedTime + TimeSpan.FromSeconds(_retentionInSeconds)))
+            if (_cachedValue is not null)
             {
                 cache = _cachedValue;
-                return true;
+                return DateTime.UtcNow < (_cachedTime + TimeSpan.FromSeconds(_retentionInSeconds));
             }
             else
             {
