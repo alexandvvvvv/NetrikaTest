@@ -46,17 +46,17 @@ namespace NetrikaTest.Services.MedicalOrganizations
 
             var result = await _cache.List();
 
-            //var searchChunks = name.Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+            var searchChunks = (filter ?? "").Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
             var query = result.AsEnumerable();
             
-            if (!string.IsNullOrWhiteSpace(filter))
+            if (searchChunks.Any())
             {
                 query = query
                     .AsParallel()
                     .Where(x =>
                     {
-                        return x.Name.Contains(filter, StringComparison.OrdinalIgnoreCase);
+                        return searchChunks.All(y => x.Name.Contains(y, StringComparison.OrdinalIgnoreCase));
                     });
             }
 
